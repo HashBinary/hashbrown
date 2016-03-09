@@ -11,19 +11,7 @@
  */
 require_once( BASEPATH.'libs/smarty/libs/Smarty.class.php' );
 
-class CI_Smarty extends Smarty {
-
-	function CI_Smarty()
-	{
-		parent::Smarty();
-
-		$this->compile_dir = APPPATH . "views/templates_c";
-		$this->template_dir = APPPATH . "views/templates";
-		$this->assign( 'APPPATH', APPPATH );
-		$this->assign( 'BASEPATH', BASEPATH );
-
-		log_message('debug', "Smarty Class Initialized");
-	}
+class Smart extends Smarty {
 
 	function __construct()
 	{
@@ -65,6 +53,7 @@ class CI_Smarty extends Smarty {
 	 */
 	function view($template, $data = array(), $return = FALSE)
 	{
+		$template = $template.'.tpl';
 		foreach ($data as $key => $val)
 		{
 			$this->assign($key, $val);
